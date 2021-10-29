@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Coucou Célestin !{% endblock %}
+
+{% block body %}
+    <div>
+        <ul style="list-style: none">
+        {% for ville in villes %}
+            <li>
+                <div>
+                    <a href={{ path('data_ville', {nom: ville.nom}) }}><h3 style="text-align: center">{{ ville.nom }}</h3></a>
+
+                    <ul style="list-style: none; display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">
+                    {% for resto in ville.restaurant %}
+                        <li style="width: 40%; margin: 20px">
+                            <div class="card text-center">
+                                <div class="card-header">
+                                    <a href={{ path('data_resto', {nom: resto.nom}) }}><h5>{{ resto.nom }}</h5></a>
+                                </div>
+                                <div class="card-body">
+                                    <img src="{{ resto.image}}" class="card-img" alt="{{ resto.nom }}">
+                                    <h5 class="card-title">Venez goûter nos spécialités {{ random(['japonaise', 'française', 'italienne', 'espagnole', 'turque', 'grecque', 'chinoise', 'américaine', 'thaïlandaise', 'indienne']) }}</h5>
+                                    <p class="card-text">Notre restaurant est situé {{ resto.adresse }}</p>
+                                    <a href="{{ path('data_resto', {nom: resto.nom})}}" class="btn btn-dark">Découvrir le restaurant</a>
+                                </div>
+                                <div class="card-footer text-muted">
+                                    {{ random(1, 365)}} days ago
+                                </div>
+                            </div>
+                        </li>
+
+                    {% endfor %}
+                    <br>
+                {% endfor %}
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
