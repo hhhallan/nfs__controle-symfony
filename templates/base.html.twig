@@ -13,6 +13,12 @@
         {% endblock %}
     </head>
     <body>
+        {% block header %}
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a style="width: 100%" class="navbar-brand" href="{{ path('data_all') }}"><h1 style="text-align: center;">Les Restos du Coin</h1></a>
+            </nav>
+        {% endblock %}
         {% block body %}{% endblock %}
+        {% block footer %}{% endblock %}
     </body>
 </html>
